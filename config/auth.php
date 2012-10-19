@@ -11,5 +11,8 @@ return [
 		'group' => 'simple',
 
 		'acl' => 'simple',
-	]
+	],
+
+	//'loginField' => 'username',
+	'loginField' => ['username', 'email'],
 ];
