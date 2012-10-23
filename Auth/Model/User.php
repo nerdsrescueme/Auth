@@ -11,7 +11,12 @@ abstract class User extends \Nerd\Model
     public function __construct()
     {
         $meta = get_called_class().'\\Meta';
-        $this->meta = $meta::findOne('SELECT * FROM nerd_user_metadata WHERE user_id = ?', $this->_values['id']);
+
+		if (isset($this->id)) {
+	        $this->meta = $meta::findOne('SELECT * FROM nerd_user_metadata WHERE user_id = ?', $this->_values['id']);
+		} else {
+			$this->meta = new $meta();
+		}
     }
 
     /**
